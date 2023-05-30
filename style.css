@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  background-color: rgb(0, 0, 10);
+  background-image: url(./assets/background_2.jpg);
+  background-size: cover;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+/* Add and delete buttons */
+.buttonsContainer {
+  width: min(600px, 90vw);
+  height: auto;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 1.5rem;
+}
+
+.addBtn,
+.deleteBtn,
+.editBtn {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  border: 2px solid rgba(164, 208, 223, 0.5);
+  border-radius: 2.5rem;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.addBtn::before,
+.deleteBtn::before,
+.editBtn::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  background: rgba(164, 208, 223, 0.5);
+  transition: 0.3s ease-in-out;
+  display: block;
+  z-index: -1;
+}
+
+.addBtn:hover::before,
+.deleteBtn:hover::before,
+.editBtn:hover::before {
+  width: 105%;
+}
+
+.addBtn:hover,
+.deleteBtn:hover,
+.editBtn:hover {
+  color: #111;
+}
+
+.deleteBtn.active {
+  background-color: rgba(255, 127, 80, 0.4);
+  border: none;
+}
+
+.addBtn img,
+.deleteBtn img {
+  width: 1.3rem;
+  filter: invert(88%) sepia(8%) saturate(1064%) hue-rotate(155deg) brightness(80%) contrast(89%);
+  opacity: 0.8;
+}
+/* END add and delete buttons */
+
+/* To do list */
+.card.active {
+  background-color: rgba(255, 127, 80, 0.25);
+}
+
+.todoListWrapper {
+  width: min(600px, 90vw);
+  height: auto;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.card {
+  width: 100%;
+  min-width: 20rem;
+  min-height: 2.5rem;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px black;
+  background-color: rgba(173, 216, 230, 0.15);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.card:active {
+  transform: translateY(5px);
+  box-shadow: none;
+}
+
+.card__text {
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px black;
+  color: rgba(164, 208, 223, 0.9);
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.done {
+  transform: translateY(5px);
+  background-color: rgba(14, 14, 14, 0.747);
+  box-shadow: none;
+}
+
+.done p {
+  color: rgba(91, 151, 151, 0.9);
+  text-decoration: line-through;
+}
+/* END To do list */
+
+/* Input form modal */
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.form__wrapper {
+  width: min(600px, 90vw);
+  min-width: 15rem;
+  height: 15%;
+  position: fixed;
+  top: calc(50% - 7.5%);
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.form__input {
+  width: 80%;
+  height: 25%;
+  line-height: 1.5rem;
+  color: rgba(164, 208, 223, 0.9);
+  background-color: rgba(15, 15, 15, 0.6);
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 1rem;
+}
+
+.form__input:focus {
+  outline: none;
+}
+
+.form__submit {
+  width: 4.5rem;
+  height: 2rem;
+  font-size: 1rem;
+  color: rgba(164, 208, 223, 0.9);
+  background-color: rgba(15, 15, 15, 0.6);
+  border: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px black;
+  transition: all 0.2s ease;
+}
+
+.form__submit:active {
+  background-color: rgba(15, 15, 15, 0.6);
+  transform: translateX(5px) translateY(5px);
+}
+/* End Input form modal */
